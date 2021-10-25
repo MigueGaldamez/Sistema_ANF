@@ -23,4 +23,7 @@ class EstadoResultado extends Model
     {
             return $this->hasMany(DetalleEstadoResultado::class, 'idEstadoResultado');
     }
+    public function anterior($anio,$empresa){
+        return $this->where('anio','=',$anio-1)->where('idEmpresa','=',$empresa)->first();
+    }
 } 

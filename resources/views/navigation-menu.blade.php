@@ -59,10 +59,10 @@
                         {{ __('Tablas Catalogo') }}
                     </x-jet-nav-link>
                     
-                      <x-jet-nav-link href="{{ route('ratios.comparar') }}" :active="request()->routeIs('ratios.comparar')">
+                      <x-jet-nav-link href="{{ route('analisis.inicio') }}" :active="request()->routeIs('analisis.inicio')">
                         {{ __('Analisis V y H') }}
                     </x-jet-nav-link>
-                      <x-jet-nav-link href="{{ route('ratios.comparar') }}" :active="request()->routeIs('ratios.comparar')">
+                      <x-jet-nav-link href="{{ route('cuentas.variacion') }}" :active="request()->routeIs('cuentas.variacion')">
                         {{ __('Variacion Cuentas') }}
                     </x-jet-nav-link>
                     
@@ -191,8 +191,9 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Inicio') }}
             </x-jet-responsive-nav-link>
+           
         </div>
 
         <!-- Responsive Settings Options -->

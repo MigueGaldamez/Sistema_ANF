@@ -1153,8 +1153,82 @@ class EstadosImportarController extends Controller
         $tipo->mensajeMalo = $request->mensajeMalo;
         $tipo->mensajeBueno = $request->mensajeBueno;
         $tipo->save();
-        
-        
         return redirect()->back()->with('mensaje',"Guardado exitosamente");
+    }
+
+    public function cuentasVariacion(){
+        $balances = Balance::where('idEmpresa','=',Auth::user()->idEmpresa)->pluck('idbalance');
+        $estados =  EstadoResultado::where('idEmpresa','=',Auth::user()->idEmpresa)->pluck('idEstadoResultado');
+        $cuentas1 = DetalleBalance::where('saldo','>',0)->whereIn('idBalance',$balances)->pluck('idCuenta');
+        $cuentas2 = DetalleEstadoResultado::where('saldo','>',0)->whereIn('idEstadoResultado',$estados)->pluck('idCuenta');
+        $cuentas = Cuenta::where(function ($query) use ($cuentas1,$cuentas2) {
+            $query->whereIn('idCuenta',$cuentas1)
+            ->orWhereIn('idCuenta',$cuentas2);
+        })
+        ->get();
+        return view('cuentas.variacion',compact('cuentas'));
+    }
+    public function cuentasVariacionDatos($id){
+        $balances = Balance::where('idEmpresa','=',Auth::user()->idEmpresa)->pluck('idbalance');
+        $estados =  EstadoResultado::where('idEmpresa','=',Auth::user()->idEmpresa)->pluck('idEstadoResultado');
+       
+       
+        $mensaje = Cuenta::where('idCuenta','=',$id)->first();
+        $datos1  = DB::table('detalleBalance')
+        ->join('balance','balance.idBalance', '=', 'detalleBalance.idBalance')
+        ->where('idCuenta','=',$id)->whereIn('detalleBalance.idBalance',$balances)->orderBy('anio','asc')->get();
+        $datos2  = DB::table('detalleEstadoResultado')
+        ->join('estadoResultado','estadoResultado.idEstadoResultado', '=', 'detalleEstadoResultado.idEstadoResultado')
+        ->where('idCuenta','=',$id)->whereIn('detalleEstadoResultado.idEstadoResultado',$estados)->orderBy('anio','asc')->get();
+        
+        if(!$datos1->isEmpty()){
+          
+            return response()->json([
+                'detalles' => ($datos1),
+                'mensaje' => ($mensaje->nombreCuenta),
+            ]);
+        }
+        if(!$datos2->isEmpty()){
+            return response()->json([
+                'detalles' => ($datos2),
+                'mensaje' => ($mensaje->nombreCuenta),
+            ]);
+        }
+    }
+    public function analisisInicio(){
+       
+       
+        $empresaMia  = DB::table('balance')
+        ->join('estadoResultado', function ($join) {
+            $join->on('balance.anio', '=', 'estadoResultado.anio')
+            ->On('balance.idEmpresa', '=', 'estadoResultado.idEmpresa');
+        })
+        ->join('empresa','balance.idEmpresa','=','empresa.idEmpresa')
+        ->where('empresa.idEmpresa','=',Auth::user()->idEmpresa)
+        ->get();
+        $modelo = Empresa::first();
+        return view('analisis.inicio',compact('modelo','empresaMia'));
+    }
+    public function analisisDatos( $anios){
+        $anios = json_decode($anios);
+        if(count($anios)<2){
+            return view('analisis.error')->with('error',"Error");
+        }
+        $balances = Balance::whereIn('anio',$anios)->where('idEmpresa','=',Auth::user()->idEmpresa)->orderBy('anio','asc')->get();
+        $estados = EstadoResultado::whereIn('anio',$anios)->where('idEmpresa','=',Auth::user()->idEmpresa)->orderBy('anio','asc')->get();
+        $balancesids = Balance::whereIn('anio',$anios)->where('idEmpresa','=',Auth::user()->idEmpresa)->orderBy('anio','asc')->pluck('idBalance');
+        $estadosids = EstadoResultado::whereIn('anio',$anios)->where('idEmpresa','=',Auth::user()->idEmpresa)->orderBy('anio','asc')->pluck('idEstadoResultado');
+        
+        $detalleBalances = DetalleBalance::whereIn('idBalance',$balancesids)->get();
+        $detalleEstados = DetalleEstadoResultado::whereIn('idEstadoResultado',$estadosids)->get();
+        $detalleBalancesids = DetalleBalance::whereIn('idBalance',$balancesids)->pluck('idCuenta');
+        $detalleEstadosids = DetalleEstadoResultado::whereIn('idEstadoResultado',$estadosids)->pluck('idCuenta');
+        $cuentasBalance = Cuenta::whereIn('idCuenta',$detalleBalancesids)->get();
+        $cuentasEstado = Cuenta::whereIn('idCuenta',$detalleEstadosids)->get();
+        
+        $modeloBalance = Balance::first();
+        $modeloEstado = EstadoResultado::first();
+
+        return view('analisis.analisis',compact('balances','estados','cuentasBalance','cuentasEstado','anios','modeloBalance','modeloEstado'));
     }
 }

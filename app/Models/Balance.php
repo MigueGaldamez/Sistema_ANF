@@ -23,4 +23,7 @@ class Balance extends Model
     {
             return $this->hasMany(DetalleBalance::class, 'idBalance');
     }
+    public function anterior($anio,$empresa){
+        return $this->where('anio','=',$anio-1)->where('idEmpresa','=',$empresa)->first();
+    }
 }

@@ -44,8 +44,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/grafico/ratio4',[Graficos
 Route::middleware(['auth:sanctum', 'verified'])->get('/ratios/{id}/comparacion/{anio}',[EstadosImportarController::class,'comparacioEmpresas' ])->name('empresas.comparar');
 Route::middleware(['auth:sanctum', 'verified'])->get('/ratios/comparacion/datos/{anio}',[EstadosImportarController::class,'comparacionDatos' ])->name('datos.comparar');
 
-//CATALOGO
+//T A B L A S        C A T A L O G O 
 Route::middleware(['auth:sanctum', 'verified'])->get('/catalogos',[EstadosImportarController::class,'catalogos' ])->name('catalogos.inicio');
 Route::middleware(['auth:sanctum', 'verified'])->post('/catalgos/tipo',[EstadosImportarController::class,'guardarTipo' ])->name('guardar.tipo');
 Route::middleware(['auth:sanctum', 'verified'])->post('/catalgos/empresa',[EstadosImportarController::class,'guardarEmpresa' ])->name('guardar.empresa');
 Route::middleware(['auth:sanctum', 'verified'])->post('/catalgos/ratio',[EstadosImportarController::class,'guardarRatio' ])->name('guardar.ratio');
+
+
+//Variacion de cuentas
+Route::middleware(['auth:sanctum', 'verified'])->get('/cuentas/variacion',[EstadosImportarController::class,'cuentasVariacion' ])->name('cuentas.variacion');
+Route::middleware(['auth:sanctum', 'verified'])->get('/cuentas/variacion/datos/{id}',[EstadosImportarController::class,'cuentasVariacionDatos' ])->name('variacion.datos');
+
+//Analisis
+Route::middleware(['auth:sanctum', 'verified'])->get('/analisis/inicio',[EstadosImportarController::class,'analisisInicio' ])->name('analisis.inicio');
+Route::middleware(['auth:sanctum', 'verified'])->get('/analisis/{anios}',[EstadosImportarController::class,'analisisDatos' ])->name('analisis.datos');
