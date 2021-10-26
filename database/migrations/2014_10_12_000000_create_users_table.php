@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('nombreEmpresa');
             $table->integer('idTipoEmpresa')->unsigned();
             $table->foreign('idTipoEmpresa')->references('idTipoEmpresa')->on('tipoEmpresa');
+            $table->integer('catalogo')->unsigned();
             $table->timestamps();
         });
         Schema::create('users', function (Blueprint $table) {

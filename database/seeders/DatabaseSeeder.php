@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\AccesoUsuario;
 use App\Models\Comportamiento;
 use App\Models\Empresa;
+use App\Models\OpcionCrud;
 use Illuminate\Database\Seeder;
 use App\Models\TipoEmpresa;
 use App\Models\User;
@@ -253,12 +255,14 @@ class DatabaseSeeder extends Seeder
         TipoEmpresa::create(['nombre'=>'Servicios']);
         TipoEmpresa::create(['nombre'=>'Comercial']);
 
-        Empresa::create(['nombreEmpresa'=>'Empresa 1','idTipoEmpresa'=>1]);
-        Empresa::create(['nombreEmpresa'=>'Empresa 2','idTipoEmpresa'=>1]);
-        Empresa::create(['nombreEmpresa'=>'Empresa 3','idTipoEmpresa'=>2]);
-        Empresa::create(['nombreEmpresa'=>'Empresa 4','idTipoEmpresa'=>2]);
+        Empresa::create(['nombreEmpresa'=>'Empresa 1','idTipoEmpresa'=>1 ,'catalogo'=>0]);
+        Empresa::create(['nombreEmpresa'=>'Empresa 2','idTipoEmpresa'=>1 ,'catalogo'=>0]);
+        Empresa::create(['nombreEmpresa'=>'Empresa 3','idTipoEmpresa'=>2 ,'catalogo'=>0]);
+        Empresa::create(['nombreEmpresa'=>'Empresa 4','idTipoEmpresa'=>2 ,'catalogo'=>0]);
 
         // \App\Models\User::factory(10)->create();
+        
+
         $user = User::factory()->count(20)->create();
         $user = User::find(1);  
         $user->email = "migue.galdamez@hotmail.com";
@@ -295,12 +299,54 @@ class DatabaseSeeder extends Seeder
         $user->idEmpresa = 4;
         $user->save();
 
+        OpcionCrud::factory()->make();
+        $opciones = OpcionCrud::get();
+        foreach($opciones as $opcion){
+          
+                AccesoUsuario::create([
+                    'idOpcion'=>$opcion->idOpcion,
+                    'idUsuario'=>1
+                ]);
+           
+        }
+        foreach($opciones as $opcion){
+            if($opcion->idOpcion!=12){
+                AccesoUsuario::create([
+                    'idOpcion'=>$opcion->idOpcion,
+                    'idUsuario'=>2
+                ]);
+            }
+        }
+        foreach($opciones as $opcion){
+            if($opcion->idOpcion!=12){
+                AccesoUsuario::create([
+                    'idOpcion'=>$opcion->idOpcion,
+                    'idUsuario'=>3
+                ]);
+            }
+        }
+        foreach($opciones as $opcion){
+            if($opcion->idOpcion!=12){
+                AccesoUsuario::create([
+                    'idOpcion'=>$opcion->idOpcion,
+                    'idUsuario'=>4
+                ]);
+            }
+        }
+        foreach($opciones as $opcion){
+            if($opcion->idOpcion!=12){
+                AccesoUsuario::create([
+                    'idOpcion'=>$opcion->idOpcion,
+                    'idUsuario'=>5
+                ]);
+            }
+        }
+
+
         $path = 'app/Models/cuenta_finale.sql';
         DB::unprepared(file_get_contents($path));
         $this->command->info('Cuentas creadas!');
 
-      
-        //Usuario 1 en la bd será admin
       
     }
 }

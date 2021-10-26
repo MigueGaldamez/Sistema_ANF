@@ -7,6 +7,9 @@
             <div class="card-body ">
                 <h1>Ver Ratios financieros de <b>{{Auth::user()->empresa->nombreEmpresa}}</b></h1>
                 <h4>Tipo de empresa: <span class="badge bg-primary">{{Auth::user()->empresa->tipoEmpresa->nombre}}</span></h4>
+                @if($anios->isEmpty())
+                    <h4 class="text-danger"><b>Alerta</b> No hay datos</h4>
+                @endif
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="balances-tab" data-bs-toggle="tab" data-bs-target="#balances" type="button" role="tab" aria-controls="balances" aria-selected="true">Razones de liquidez</button>
@@ -26,6 +29,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="balances" role="tabpanel" aria-labelledby="balances-tab"> 
                         <div class="accordion mt-4" id="accordionUno">
+                            @if(!$anios->isEmpty())                
                             <h2>Historico</h2>
                              <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -160,13 +164,14 @@
                                 </div>
                             </div>
                             {{--FIN--}}
-                        </div>
-                       
+                            @endif
+                        </div>                       
                     </div>
                     {{--Fin de Balance--}}
                     <div class="tab-pane fade" id="estados" role="tabpanel" aria-labelledby="estados-tab"> 
                         {{--Inicio--}}
                         <div class="accordion mt-4" id="accordiondos">
+                            @if(!$anios->isEmpty())       
                             <h2>Historico</h2>
                              <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -299,6 +304,7 @@
                                 
                                 </div>
                             </div>
+                            @endif
                             {{--FIN--}}
                             
                         </div>
@@ -307,6 +313,7 @@
                      <div class="tab-pane fade" id="tipo3-tab" role="tabpanel" aria-labelledby="tipo3-tab"> 
                         {{--Inicio--}}
                         <div class="accordion mt-4" id="accordiontres">
+                            @if(!$anios->isEmpty())       
                             <h2>Historico</h2>
                              <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -441,11 +448,13 @@
                             </div>
                             {{--FIN--}}
                         </div>
+                        @endif
                         {{--Fin--}}
                     </div>
                      <div class="tab-pane fade" id="tipo4-tab" role="tabpanel" aria-labelledby="tipo4-tab"> 
                          {{--Inicio--}}
                         <div class="accordion mt-4" id="accordioncuatro">
+                            @if(!$anios->isEmpty())       
                             <h2>Historico</h2>
                              <table class="table table-sm table-striped">
                                 <thead class="table-dark">
@@ -582,6 +591,7 @@
                             {{--FIN--}}
                         </div>
                         {{--Fin--}}
+                        @endif
                     </div>
                 </div>
               

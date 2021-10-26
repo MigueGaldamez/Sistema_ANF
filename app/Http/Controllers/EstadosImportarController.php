@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cuenta;
 use App\Imports\DetalleBalanceImport;
 use App\Imports\DetalleEstadoResultadoImport;
+use App\Models\AccesoUsuario;
 use App\Models\Balance;
 use App\Models\DetalleBalance;
 use App\Models\DetalleEstadoResultado;
@@ -15,8 +16,10 @@ use Excel;
 use App\Models\Ratio;
 use Illuminate\Support\Facades\DB;
 use App\Models\Empresa;
+use App\Models\OpcionCrud;
 use App\Models\TipoEmpresa;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 class EstadosImportarController extends Controller
 {
     //
@@ -1231,4 +1234,40 @@ class EstadosImportarController extends Controller
 
         return view('analisis.analisis',compact('balances','estados','cuentasBalance','cuentasEstado','anios','modeloBalance','modeloEstado'));
     }
+    
+    public function catalogoSubir(){
+        return view('cuentas.subirCatalogo');
+    }
+    public function guardarCatalogo(Request $request){
+        $empresa = Empresa::where('idEmpresa','=',Auth::user()->idEmpresa)->first();
+        if($empresa->catalogo==0){
+            $empresa->catalogo = 1;
+            $empresa->save();
+        }
+        else{
+            return redirect()->back()->with('error',"Esta empresa ya tiene un catalogo de cuentas ingresado");
+        }
+        return redirect()->back()->with('mensaje',"Guardado exitosamente");
+    }
+    public function permisosUsuario(){
+        return view('permiso.index');
+    }
+    public function permisosData(){
+        $usuarios = User::where('id','!=',Auth::user()->id)->get();
+        $opciones = OpcionCrud::all();
+        return view('permiso.tabla',compact('usuarios','opciones'));
+    }
+    public function permisosModificar(Request $request){
+
+        $acceso = AccesoUsuario::where('idOpcion','=', $request->idOpcion)->where('idUsuario','=',$request->idUsuario)->first();
+        if($acceso){
+            $acceso->delete();
+        }else{
+            AccesoUsuario::create([
+                'idOpcion'=>$request->idOpcion,
+                'idUsuario'=>$request->idUsuario,
+            ]);
+        }
+    }
 }
+

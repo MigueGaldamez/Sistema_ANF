@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Support\Facades\Auth;
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -63,5 +63,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Empresa::class,'idEmpresa');
     }
-
+    public function accesoUsuario()
+    {
+        return $this->hasMany(AccesoUsuario::class,'idUsuario','id');
+    }
+    public function permisoSi($id){
+        return AccesoUsuario::where('idUsuario','=',Auth::user()->id)->where('idOpcion','=',$id)->first();
+    }
+    public function permisoVer($id,$idUsuario){
+        return AccesoUsuario::where('idUsuario','=',$idUsuario)->where('idOpcion','=',$id)->first();
+    }
 }

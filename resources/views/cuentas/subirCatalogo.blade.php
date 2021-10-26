@@ -2,52 +2,32 @@
 @section('content')
 <div class="container mt-4">
     <div class="row">
-        <div class="col col-12 col-md-6 col-lg-6 col-sm-12">
+        <div class="col col-12">
             <div class="card shadow mx-2 p-4">
-               <h2 class="mb-0">Subir Balance General</h2>
-            <h5 class="mt-0">Tambien llamado estado de situacion financiera</h5>
-            <form class="mt-4" method="post" action="{{ route('guardar.balance') }}" enctype="multipart/form-data">
+               <h2 class="mb-0">Subir Catalogo de cuentas</h2>
+          
+           
+            <form class="mt-4 col-sm-12 col-12  col-xl-6" method="post" action="{{ route('guardar.catalogo') }}" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
-                    <label for="anio">Text</label>
-                    <input id="anio" class="form-control" name="anio" type="number" min="{{date('Y')-20}}" max="{{date('Y')+80}}" step="1" value="{{date('Y')-1}}" @if(Auth::user()->empresa->catalogo == 0) disabled @endif>
-                </div>
+                 <h5 class="mt-0">Este proceso solo se permite realizar una vez, asi que asegurese de hacerlo correctamente</h5>
                 <div class="form-group">
                     <label for="archivo">Archivos permitidos .svc .svcx</label>
-                    <input id="archivo" class="form-control" type="file" name="archivo"  accept=".xlsx, .xlsm" @if(Auth::user()->empresa->catalogo == 0) disabled @endif>
+                    <input id="archivo" class="form-control" type="file" name="archivo"  @if(Auth::user()->empresa->catalogo == 1) disabled @endif accept=".xlsx, .xlsm">
                 </div>
                  @if(Auth::user()->empresa->catalogo == 0)
-                    <span class="text-danger"><b>Atecion! </b>Aun no ha subido un catalogo de cuentas <a href="{{route('catalogo.subir')}}">Subir?</a></span><br>
+                    <span class="text-danger"><b>Atecion! </b>Aun no ha subido un catalogo de cuentas</span><br>
+                @elseif(Auth::user()->empresa->catalogo == 1)
+                    <span class="text-success"><b>Listo! </b>Ya cuenta con un catalogo de cuentas</span><br>
                 @endif
                     
-                <button class="btn btn-primary mt-2 text-light" type="submit">Importar</button>
+                <button class="btn btn-primary mt-2 text-light" type="submit" @if(Auth::user()->empresa->catalogo == 1) disabled @endif>Subir</button>
  
 
             </form>
             </div>
             
         </div>
-         <div class="col col-12 col-md-6 col-lg-6 col-sm-12 mt-4 mt-md-0">
-            <div class="card p-4 mx-2 shadow">
-                <h2 class="mb-0">Subir Estado de Resultados</h2>
-                <h5 class="mt-0">Tambien llamado estado de pérdidas y ganancias</h5>
-                <form class="mt-4" method="post" action="{{ route('guardar.estado') }}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="anio">Text</label>
-                        <input id="anio" class="form-control" name="anio" type="number"  @if(Auth::user()->empresa->catalogo == 0) disabled @endif min="{{date('Y')-20}}" max="{{date('Y')+80}}" step="1" value="{{date('Y')-1}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="archivo">Archivos permitidos .svc .svcx</label>
-                        <input id="archivo" class="form-control" type="file" name="archivo" accept=".xlsx, .xlsm" @if(Auth::user()->empresa->catalogo == 0) disabled @endif>
-                    </div>
-                    @if(Auth::user()->empresa->catalogo == 0)
-                        <span class="text-danger"><b>Atecion! </b>Aun no ha subido un catalogo de cuentas <a href="{{route('catalogo.subir')}}">Subir?</a></span><br>
-                    @endif
-                    <button class="btn btn-primary mt-2 text-light" type="submit">Importar</button>
-                </form>
-            </div>
-        </div>
+         
         @if(session()->has('mensaje'))
         <div class="position-fixed bottom-0 end-0 p-3 show" style="z-index: 11">
             <div id="liveToast" class="toast notificacion" role="alert" aria-live="assertive" aria-atomic="true">

@@ -14,6 +14,7 @@ class Empresa extends Model
     protected $fillable = [
         'nombreEmpresa',
         'idTipoEmpresa',
+        'catalogo',
     ];
     public function tipoEmpresa()
     {

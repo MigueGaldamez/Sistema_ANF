@@ -58,3 +58,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/cuentas/variacion/datos/{
 //Analisis
 Route::middleware(['auth:sanctum', 'verified'])->get('/analisis/inicio',[EstadosImportarController::class,'analisisInicio' ])->name('analisis.inicio');
 Route::middleware(['auth:sanctum', 'verified'])->get('/analisis/{anios}',[EstadosImportarController::class,'analisisDatos' ])->name('analisis.datos');
+
+//Subir Catalogo
+Route::middleware(['auth:sanctum', 'verified'])->get('/catalogo/subir',[EstadosImportarController::class,'catalogoSubir' ])->name('catalogo.subir');
+Route::middleware(['auth:sanctum', 'verified'])->post('/catalogo/subr',[EstadosImportarController::class,'guardarCatalogo' ])->name('guardar.catalogo');
+
+//permisos
+Route::middleware(['auth:sanctum', 'verified'])->get('/permisos/inicio',[EstadosImportarController::class,'permisosUsuario' ])->name('permisos.inicio');
+Route::middleware(['auth:sanctum', 'verified'])->get('/permisos/tabla',[EstadosImportarController::class,'permisosData' ])->name('permisos.data');
+Route::middleware(['auth:sanctum', 'verified'])->post('/permisos/modificar',[EstadosImportarController::class,'permisosModificar' ])->name('permisos.modificar');

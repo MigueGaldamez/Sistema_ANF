@@ -6,18 +6,21 @@
         <div class="col col-12 col-md-12 col-lg-12 col-sm-12">
             <div class="card shadow mx-2 p-4">
                 <h2 class="mb-0">Ver variacion de cuentas</h2>
-                <h5 class="mt-0">De la empresa: {{Auth::user()->empresa->nombreEmpresa}}</h5>
+                <h5 class="mt-0">De la empresa: <span class="badge bg-primary">{{Auth::user()->empresa->nombreEmpresa}}</span></h5>
+                @if($cuentas->isEmpty())   
+                     <h4 class="text-danger"><b>Alerta</b> No hay datos</h4>
+                @endif           
                 <div class="col-4">
-                     <select class="form-select" aria-label="Default select example" id="seleccionarCuenta">
-                    <option selected>Selecciona una cuenta</option>
-                    @foreach ($cuentas as $cuenta)
-                         <option value="{{$cuenta->idCuenta}}">{{$cuenta->nombreCuenta}}</option>
-                    @endforeach
-                </select>
+                    <select class="form-select" aria-label="Default select example" id="seleccionarCuenta"  @if($cuentas->isEmpty()) disabled  @endif  >
+                        <option selected>Selecciona una cuenta</option>
+                        @foreach ($cuentas as $cuenta)
+                            <option value="{{$cuenta->idCuenta}}">{{$cuenta->nombreCuenta}}</option>
+                        @endforeach
+                    </select>
                 </div>
+
+                <span class="mt-2"><button class="btn btn-success" type="button"  onClick="variacion()"  @if($cuentas->isEmpty()) disabled  @endif>Generar grafico</button></span> 
                
-                <span class="mt-2"><button class="btn btn-success" type="button"  onClick="variacion()">Generar grafico</button></span> 
-                
                 <canvas id="graficoCuentas"  height="215" width="700"></canvas>
             </div>
           
