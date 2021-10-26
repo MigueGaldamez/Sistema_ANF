@@ -11,7 +11,7 @@
                 @endphp
             @endforeach
             <tr>
-                <th colspan="100%" class="bg-info"><h2>{{Auth::user()->empresa->nombreEmpresa}}</h2></th>       
+                <th colspan="100%" class="tabla-acentuada"><h2>{{Auth::user()->empresa->nombreEmpresa}}</h2></th>       
             
             </tr>
             <tr>
@@ -48,7 +48,7 @@
         <tbody>
             
             @foreach ($cuentasBalance as $cuenta)
-            <tr>
+             <tr>
                 @php
                     $cuenta0 = false;
                     $tieneAnterior = false;
@@ -63,7 +63,7 @@
                     
                 @endforeach  
                 @if ($cuenta0)
-                    <td colspan="" class="text-start"><b>{{$cuenta->nombreCuenta}}</b></td>
+                    <td colspan="100%" class="text-start"><b>{{$cuenta->nombreCuenta}}</b></td>
                 @else
                     <td class="text-start">{{$cuenta->nombreCuenta}}</td>
                 @endif
@@ -71,22 +71,50 @@
                 @foreach ($anios as $anio)
 
                     @php
+                        @$actual = $cuenta->saldoBalanceAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio)->saldo;                  
+                    @endphp
+                    @if($actual == 0)
+                     
+                    @else
+                        <td>{{$actual}}</td>  
+                    @endif
+                @endforeach
+                @foreach ($anios as $anio)
+                     @php
                         @$actual = $cuenta->saldoBalanceAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio)->saldo;
                         @$anterior = $cuenta->saldoBalanceAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio-1)->saldo;
                     @endphp
-                    @if ($actual==0)
-                    <td></td>
-                    <td></td>
-                        
-                    @else
-                        <td>{{$actual}}</td>  
-                        
-                        @if ($anterior!=0 || $anterior != null)
+                        @if ($anterior!=0 && $anterior !=null  )
                             <td>{{$actual - $anterior}}</td>
+                           
+                        @endif    
+                @endforeach
+                   @foreach ($anios as $anio)
+                     @php
+                        @$actual = $cuenta->saldoBalanceAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio)->saldo;
+                        @$anterior = $cuenta->saldoBalanceAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio-1)->saldo;
+                    @endphp
+                        @if ($anterior!=0 && $anterior !=null  )
+                          
                             <td>{{number_format((($actual - $anterior)/$anterior), 2, '.', ',');}}</td>  
                         @endif    
+                @endforeach
+                @foreach ($anios as $anio)
+
+                    @php
+                        @$activo = $modeloBalance->activoAnio($anio,Auth::user()->idEmpresa)->saldo;
+                        @$pasivo = $modeloBalance->pasivoAnio($anio,Auth::user()->idEmpresa)->saldo;
+                        @$actual = $cuenta->saldoBalanceAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio);
+                      
+                    @endphp
+                    @if($actual->saldo != 0)                   
+                        @if($cuenta->naturaleza == 1)
+                        <td>{{number_format((($actual->saldo/$activo*100)), 2, '.', ',');}} %</td>
+                        @endif
+                         @if($cuenta->naturaleza == 2)
+                        <td>{{number_format((($actual->saldo/$pasivo*100)), 2, '.', ',');}} %</td>
+                        @endif
                     @endif
-                            
                 @endforeach
             </tr>
             @endforeach  
@@ -107,7 +135,7 @@
                 @endphp
             @endforeach
             <tr>
-                <th colspan="100%" class="bg-info"><h2>{{Auth::user()->empresa->nombreEmpresa}}</h2></th>       
+                <th colspan="100%" class="tabla-acentuada"><h2>{{Auth::user()->empresa->nombreEmpresa}}</h2></th>       
             
             </tr>
             <tr>
@@ -159,7 +187,7 @@
                     
                 @endforeach  
                 @if ($cuenta0)
-                    <td colspan="" class="text-start"><b>{{$cuenta->nombreCuenta}}</b></td>
+                    <td colspan="100%" class="text-start"><b>{{$cuenta->nombreCuenta}}</b></td>
                 @else
                     <td class="text-start">{{$cuenta->nombreCuenta}}</td>
                 @endif
@@ -167,22 +195,47 @@
                 @foreach ($anios as $anio)
 
                     @php
+                        @$actual = $cuenta->saldoEstadoAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio)->saldo;                  
+                    @endphp
+                    @if($actual == 0)
+                     
+                    @else
+                        <td>{{$actual}}</td>  
+                    @endif
+                @endforeach
+                @foreach ($anios as $anio)
+                     @php
                         @$actual = $cuenta->saldoEstadoAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio)->saldo;
                         @$anterior = $cuenta->saldoEstadoAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio-1)->saldo;
                     @endphp
-                    @if ($actual==0)
-                    <td></td>
-                    <td></td>
-                        
-                    @else
-                        <td>{{$actual}}</td>  
-                        
-                        @if ($anterior!=0 || $anterior != null)
+                        @if ($anterior!=0 && $anterior !=null  )
                             <td>{{$actual - $anterior}}</td>
+                           
+                        @endif    
+                @endforeach
+                   @foreach ($anios as $anio)
+                     @php
+                        @$actual = $cuenta->saldoEstadoAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio)->saldo;
+                        @$anterior = $cuenta->saldoEstadoAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio-1)->saldo;
+                    @endphp
+                        @if ($anterior!=0 && $anterior !=null  )
+                          
                             <td>{{number_format((($actual - $anterior)/$anterior), 2, '.', ',');}}</td>  
                         @endif    
+                @endforeach
+                  @foreach ($anios as $anio)
+
+                    @php
+                       
+                        @$ventas = $modeloEstado->ventasAnio($anio,Auth::user()->idEmpresa)->saldo;
+                        @$actual = $cuenta->saldoEstadoAnio($cuenta->idCuenta,Auth::user()->idEmpresa,$anio);
+                      
+                    @endphp
+                    @if($actual->saldo != 0)                   
+                      
+                        <td>{{number_format((($actual->saldo/$ventas*100)), 2, '.', ',');}} %</td>
+                       
                     @endif
-                            
                 @endforeach
             </tr>
             @endforeach  

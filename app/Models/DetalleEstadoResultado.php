@@ -24,4 +24,5 @@ class DetalleEstadoResultado extends Model
     {
         return $this->belongsTo(Cuenta::class,'idCuenta');
     }
+ 
 }

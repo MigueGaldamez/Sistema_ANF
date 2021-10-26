@@ -26,4 +26,13 @@ class EstadoResultado extends Model
     public function anterior($anio,$empresa){
         return $this->where('anio','=',$anio-1)->where('idEmpresa','=',$empresa)->first();
     }
+    public function ventasAnio($anio,$empresa){
+        $estado = EstadoResultado::where('idEmpresa','=',$empresa)->where('anio','=',$anio)->first();
+        $valores2 = ['5101'];
+        $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
+        $detalle2 = DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->first();
+        return $detalle2;
+
+    }
 } 
+

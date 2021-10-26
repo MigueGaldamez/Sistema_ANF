@@ -73,7 +73,7 @@ class EstadosImportarController extends Controller
     }
     public function guardarBalance(Request $request){
         $file = $request->archivo;
-        $ya = Balance::where('anio','=',$request->anio)->get();
+        $ya = Balance::where('anio','=',$request->anio)->where('idEmpresa','=',Auth::user()->idEmpresa)->get();
         if(!$file){
             return redirect()->back()->with('error',"Ingrese un archivo valido");
         }
@@ -92,8 +92,8 @@ class EstadosImportarController extends Controller
             return redirect()->back()->with('error',"Ingrese un archivo valido");
         }
         
-        $pasivo = DetalleBalance::where('idCuenta','=',393)->where('idBalance','=',$balance->idBalance)->first();
-        $activo = DetalleBalance::where('idCuenta','=',388)->where('idBalance','=',$balance->idBalance)->first();
+        $pasivo = DetalleBalance::where('idCuenta','=',1)->where('idBalance','=',$balance->idBalance)->first();
+        $activo = DetalleBalance::where('idCuenta','=',67)->where('idBalance','=',$balance->idBalance)->first();
         if($pasivo->saldo != $activo->saldo){
             $eliminar = DetalleBalance::where('idBalance','=',$balance->idBalance)->delete();
             $balance->delete();
@@ -108,7 +108,7 @@ class EstadosImportarController extends Controller
     }
     public function guardarEstado(Request $request){
         $file = $request->archivo;
-        $ya = EstadoResultado::where('anio','=',$request->anio)->get();
+        $ya = EstadoResultado::where('anio','=',$request->anio)->where('idEmpresa','=',Auth::user()->idEmpresa)->get();
         if(!$file){
             return redirect()->back()->with('error',"Ingrese un archivo valido");
         }

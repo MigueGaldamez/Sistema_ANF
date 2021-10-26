@@ -295,7 +295,7 @@ class DatabaseSeeder extends Seeder
         $user->idEmpresa = 4;
         $user->save();
 
-        $path = 'app/Models/cuenta.sql';
+        $path = 'app/Models/cuenta_finale.sql';
         DB::unprepared(file_get_contents($path));
         $this->command->info('Cuentas creadas!');
 
