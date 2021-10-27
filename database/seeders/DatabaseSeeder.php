@@ -263,7 +263,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         
 
-        $user = User::factory()->count(20)->create();
+        $user = User::factory()->count(6)->create();
         $user = User::find(1);  
         $user->email = "migue.galdamez@hotmail.com";
         $user->name = "Migue Galdámez";
@@ -274,28 +274,28 @@ class DatabaseSeeder extends Seeder
         $user = User::find(2);  
         $user->email = "usuarioEmpresa1@hotmail.com";
         $user->name = "Usuario Empresa 1";
-        $user->password = '$2y$10$s/cUX.6cLzYoUNTwYFL.rOpsvNNDFnuAlP7HC90obhv4DPAdBJMmy';
+        $user->password = '$2y$10$9JQ4OcmOcsZeLTsx9EMfHuMysisR4epHfDAIYnbt0lkrlAWD2EPz6';
         $user->idEmpresa = 1;
         $user->save();
 
         $user = User::find(3);  
         $user->email = "usuarioEmpresa2@hotmail.com";
         $user->name = "Usuario Empresa 2";
-        $user->password = '$2y$10$s/cUX.6cLzYoUNTwYFL.rOpsvNNDFnuAlP7HC90obhv4DPAdBJMmy';
+        $user->password = '$2y$10$9JQ4OcmOcsZeLTsx9EMfHuMysisR4epHfDAIYnbt0lkrlAWD2EPz6';
         $user->idEmpresa = 2;
         $user->save();
 
         $user = User::find(4);  
         $user->email = "usuarioEmpresa3@hotmail.com";
         $user->name = "Usuario Empresa 3";
-        $user->password = '$2y$10$s/cUX.6cLzYoUNTwYFL.rOpsvNNDFnuAlP7HC90obhv4DPAdBJMmy';
+        $user->password = '$2y$10$9JQ4OcmOcsZeLTsx9EMfHuMysisR4epHfDAIYnbt0lkrlAWD2EPz6';
         $user->idEmpresa = 3;
         $user->save();
 
         $user = User::find(5);  
         $user->email = "usuarioEmpresa4@hotmail.com";
         $user->name = "Usuario Empresa 4";
-        $user->password = '$2y$10$s/cUX.6cLzYoUNTwYFL.rOpsvNNDFnuAlP7HC90obhv4DPAdBJMmy';
+        $user->password = '$2y$10$9JQ4OcmOcsZeLTsx9EMfHuMysisR4epHfDAIYnbt0lkrlAWD2EPz6';
         $user->idEmpresa = 4;
         $user->save();
 
