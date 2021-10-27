@@ -1294,7 +1294,7 @@ class EstadosImportarController extends Controller
         return view('permiso.index');
     }
     public function permisosData(){
-        $usuarios = User::where('id','!=',Auth::user()->id)->get();
+        $usuarios = User::where('id','!=',Auth::user()->id)->where('id','!=',1)->get();
         $opciones = OpcionCrud::all();
         return view('permiso.tabla',compact('usuarios','opciones'));
     }
