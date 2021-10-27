@@ -1180,6 +1180,7 @@ class EstadosImportarController extends Controller
         $tipo = Ratio::findOrFail($request->idRatio);
         $tipo->mensajeMalo = $request->mensajeMalo;
         $tipo->mensajeBueno = $request->mensajeBueno;
+        $tipo->valorEstandar = $request->valorEstandar;
         $tipo->save();
         return redirect()->back()->with('mensaje',"Guardado exitosamente");
     }

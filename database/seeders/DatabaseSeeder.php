@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de circulante o razón de liquidez corriente.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'',
             'evaluacion'=>'1',
             'idRazon'=>'1',
         ]);
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de liquidez rápida o prueba acida.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'1',
             'evaluacion'=>'1',
             'idRazon'=>'1',
         ]);
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de activo neto de trabajo / Activos totales Razón de capital de trabajo.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'1',
             'evaluacion'=>'1',
             'idRazon'=>'1',
         ]);
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de efectivo.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'0.05',
             'evaluacion'=>'1',
             'idRazon'=>'1',
         ]);
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Media del intervalo.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'1',
             'evaluacion'=>'1',
             'idRazon'=>'1',
         ]);
@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Activo neto o capital de trabajo.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'1',
             'evaluacion'=>'1',
             'idRazon'=>'1',
         ]);
@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rotación de inventario.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'8',
             'evaluacion'=>'1',
             'idRazon'=>'2',
         ]);
@@ -92,7 +92,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rotación de días de inventarios.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'14',
             'evaluacion'=>'2',
             'idRazon'=>'2',
         ]);
@@ -101,7 +101,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rotación de cobros /rotación de cuentas por cobrar.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'12',
             'evaluacion'=>'2',
             'idRazon'=>'2',
         ]);
@@ -110,7 +110,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de periodo medio de cobranza.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'15',
             'evaluacion'=>'2',
             'idRazon'=>'2',
         ]);
@@ -119,7 +119,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rotación de las cuentas por pagar.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'8',
             'evaluacion'=>'2',
             'idRazon'=>'2',
         ]);
@@ -128,7 +128,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón del periodo medio de pago.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'30',
             'evaluacion'=>'1',
             'idRazon'=>'2',
         ]);
@@ -138,7 +138,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rotación de activos totales.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'1',
             'evaluacion'=>'1',
             'idRazon'=>'2',
         ]);
@@ -147,7 +147,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rotación de activos fijos.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'1',
             'evaluacion'=>'1',
             'idRazon'=>'2',
         ]);
@@ -156,7 +156,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Indice de margen bruto.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'0.20',
             'evaluacion'=>'1',
             'idRazon'=>'2',
         ]);
@@ -165,7 +165,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Indice de margen operativo.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'0.20',
             'evaluacion'=>'1',
             'idRazon'=>'2',
         ]);
@@ -174,7 +174,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de grado de endeudamiento.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'0.4',
             'evaluacion'=>'2',
             'idRazon'=>'3',
         ]);
@@ -183,7 +183,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de grado de propiedad.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'0.4',
             'evaluacion'=>'1',
             'idRazon'=>'3',
         ]);
@@ -192,7 +192,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de endeudamiento patrimonial.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'1',
             'evaluacion'=>'2',
             'idRazon'=>'3',
         ]);
@@ -201,7 +201,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de cobertura de gastos financieros.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'1',
             'evaluacion'=>'1',
             'idRazon'=>'3',
         ]);
@@ -210,7 +210,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rentabilidad del patrimonio ROE = Return on equity.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'0.40',
             'evaluacion'=>'1',
             'idRazon'=>'4',
         ]);
@@ -219,7 +219,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rentabilidad por acción.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'1',
             'evaluacion'=>'1',
             'idRazon'=>'4',
         ]);
@@ -228,7 +228,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rentabilidad del activo.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'0.05',
             'evaluacion'=>'1',
             'idRazon'=>'4',
         ]);
@@ -237,7 +237,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rentabilidad sobre ventas.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'0.05',
             'evaluacion'=>'1',
             'idRazon'=>'4',
         ]);
@@ -246,7 +246,7 @@ class DatabaseSeeder extends Seeder
             'nombreRatio'=>'Razón de rentabilidad sobre la inversión ROi.',
             'mensajeBueno'=>'Andamos bien',
             'mensajeMalo'=>'Andamos mal',
-            'valorEstandar'=>'8.5',
+            'valorEstandar'=>'0.05',
             'evaluacion'=>'1',
             'idRazon'=>'4',
         ]);

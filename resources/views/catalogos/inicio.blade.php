@@ -273,6 +273,7 @@
                                             <th class="text-start">Nombre Ratio</th>
                                             <th>Mensaje Bueno</th>
                                             <th>Mensaje Malo</th>
+                                            <th>Valor Estandar</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -287,6 +288,9 @@
                                             </td>
                                               <td> 
                                                 {{$ratio->mensajeMalo}}
+                                            </td>
+                                             <td> 
+                                                {{$ratio->valorEstandar}}
                                             </td>
                                             <td>
                                                 <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#ratio-{{$ratio->idRatio}}">
@@ -314,6 +318,10 @@
                                                                   <div class="form-group">
                                                                     <label for="mensajeMalo">Mensaje Malo</label>
                                                                     <input id="mensajeMalo" class="form-control" name="mensajeMalo" type="text"  value="{{$ratio->mensajeMalo}}">
+                                                                </div>
+                                                                 <div class="form-group">
+                                                                    <label for="valorEstandar">Valor estandar</label>
+                                                                    <input id="valorEstandar" class="form-control" name="valorEstandar" type="text"  value="{{$ratio->valorEstandar}}">
                                                                 </div>
                                                                 <div class="form-group d-none">
                                                                     <label for="idRatio">id</label>

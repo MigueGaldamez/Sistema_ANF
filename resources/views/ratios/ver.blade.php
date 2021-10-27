@@ -134,8 +134,9 @@
                                                 @if($elemento->valorRatio==0)
                                                      <span class="badge bg-warning text-dark">No Aplica</span>
                                                 @else
-                                                    <b>{{$elemento->comportamiento->nombreComportamiento}} </b> 
-                                                    @if ($elemento->anteriorValor($elemento))                                                                                                   
+                                                   
+                                                    @if ($elemento->anteriorValor($elemento))      
+                                                         <b>{{$elemento->comportamiento->nombreComportamiento}} </b>                                                                                              
                                                         @if($elemento->ratio->evaluacion==1)
                                                             @if ($elemento->anteriorValor($elemento)->valorRatio > $elemento->valorRatio)
                                                             <span class="badge bg-danger">Andamos mal</span>
@@ -151,7 +152,21 @@
                                                         
                                                         @endif
                                                     @else
-                                                        <span class="badge bg-success">Andamos bien</span> Por ser primer año de operaciones
+                                                        <b>Comparado con el estandar</b>
+                                                        @if($elemento->ratio->evaluacion==1)
+                                                            @if ($elemento->ratio->valorEstandar > $elemento->valorRatio)
+                                                            <span class="badge bg-danger">Andamos mal</span>
+                                                            @else
+                                                            <span class="badge bg-success">Andamos bien</span>  
+                                                            @endif
+                                                        @elseif ($elemento->ratio->evaluacion==2)
+                                                            @if ($elemento->ratio->valorEstandar < $elemento->valorRatio)
+                                                                <span class="badge bg-danger">Andamos mal</span> 
+                                                            @else
+                                                                <span class="badge bg-success">Andamos bien</span>  
+                                                            @endif      
+                                                        
+                                                        @endif
                                                     @endif    
                                                 @endif 
                                                 </p></li>
@@ -275,8 +290,9 @@
                                                 @if($elemento->valorRatio==0)
                                                      <span class="badge bg-warning text-dark">No Aplica</span>
                                                 @else
-                                                    <b>{{$elemento->comportamiento->nombreComportamiento}} </b> 
-                                                    @if ($elemento->anteriorValor($elemento))                                                                                                   
+                                                  
+                                                    @if ($elemento->anteriorValor($elemento))     
+                                                          <b>{{$elemento->comportamiento->nombreComportamiento}} </b>                                                                                                
                                                         @if($elemento->ratio->evaluacion==1)
                                                             @if ($elemento->anteriorValor($elemento)->valorRatio > $elemento->valorRatio)
                                                             <span class="badge bg-danger">Andamos mal</span>
@@ -292,7 +308,21 @@
                                                         
                                                         @endif
                                                     @else
-                                                        <span class="badge bg-success">Andamos bien</span> Por ser primer año de operaciones
+                                                        <b>Comparado con el estandar</b>
+                                                        @if($elemento->ratio->evaluacion==1)
+                                                            @if ($elemento->ratio->valorEstandar > $elemento->valorRatio)
+                                                            <span class="badge bg-danger">Andamos mal</span>
+                                                            @else
+                                                            <span class="badge bg-success">Andamos bien</span> 
+                                                            @endif
+                                                        @elseif ($elemento->ratio->evaluacion==2)
+                                                            @if ($elemento->ratio->valorEstandar < $elemento->valorRatio)
+                                                                <span class="badge bg-danger">Andamos mal</span> 
+                                                            @else
+                                                                <span class="badge bg-success">Andamos bien</span> 
+                                                            @endif      
+                                                        
+                                                        @endif
                                                     @endif    
                                                 @endif 
                                                 </p></li>
@@ -320,7 +350,7 @@
                                     <tr>
                                         <th>Ratio</th>
                                         @foreach ($anios as $record)
-                                            <th>{{$record}}</th>
+                                            <th class="text-center">{{$record}}</th>
                                         @endforeach
                                     </tr>
                                 </thead>
@@ -417,8 +447,9 @@
                                                 @if($elemento->valorRatio==0)
                                                      <span class="badge bg-warning text-dark">No Aplica</span>
                                                 @else
-                                                    <b>{{$elemento->comportamiento->nombreComportamiento}} </b> 
-                                                    @if ($elemento->anteriorValor($elemento))                                                                                                   
+                                                    
+                                                    @if ($elemento->anteriorValor($elemento))    
+                                                        <b>{{$elemento->comportamiento->nombreComportamiento}} </b>                                                                                                
                                                         @if($elemento->ratio->evaluacion==1)
                                                             @if ($elemento->anteriorValor($elemento)->valorRatio > $elemento->valorRatio)
                                                             <span class="badge bg-danger">Andamos mal</span>
@@ -434,7 +465,21 @@
                                                         
                                                         @endif
                                                     @else
-                                                        <span class="badge bg-success">Andamos bien</span> Por ser primer año de operaciones
+                                                        <b>Comparado con el estandar</b> 
+                                                       @if($elemento->ratio->evaluacion==1)
+                                                            @if ($elemento->ratio->valorEstandar > $elemento->valorRatio)
+                                                            <span class="badge bg-danger">Andamos mal</span> 
+                                                            @else
+                                                            <span class="badge bg-success">Andamos bien</span>  
+                                                            @endif
+                                                        @elseif ($elemento->ratio->evaluacion==2)
+                                                            @if ($elemento->ratio->valorEstandar < $elemento->valorRatio)
+                                                                <span class="badge bg-danger">Andamos mal</span>  
+                                                            @else
+                                                                <span class="badge bg-success">Andamos bien</span>  
+                                                            @endif      
+                                                        
+                                                        @endif
                                                     @endif    
                                                 @endif 
                                                 </p></li>
@@ -461,7 +506,7 @@
                                     <tr>
                                         <th>Ratio</th>
                                         @foreach ($anios as $record)
-                                            <th>{{$record}}</th>
+                                             <th class="text-center">{{$record}}</th>
                                         @endforeach
                                     </tr>
                                 </thead>
@@ -559,8 +604,9 @@
                                                 @if($elemento->valorRatio==0)
                                                      <span class="badge bg-warning">No Aplica</span>
                                                 @else
-                                                    <b>{{$elemento->comportamiento->nombreComportamiento}} </b> 
-                                                    @if ($elemento->anteriorValor($elemento))                                                                                                   
+                                                  
+                                                    @if ($elemento->anteriorValor($elemento))      
+                                                          <b>{{$elemento->comportamiento->nombreComportamiento}} </b>                                                                                              
                                                         @if($elemento->ratio->evaluacion==1)
                                                             @if ($elemento->anteriorValor($elemento)->valorRatio > $elemento->valorRatio)
                                                             <span class="badge bg-danger">Andamos mal</span>
@@ -576,7 +622,22 @@
                                                         
                                                         @endif
                                                     @else
-                                                        <span class="badge bg-success">Andamos bien</span> Por ser primer año de operaciones
+                                                        <b>Comparado con el estandar</b> 
+                                                        @if($elemento->ratio->evaluacion==1)
+                                                            @if ($elemento->ratio->valorEstandar > $elemento->valorRatio)
+                                                            <span class="badge bg-danger">Andamos mal</span> 
+                                                            @else
+                                                            <span class="badge bg-success">Andamos bien</span>  
+                                                            @endif
+                                                        @elseif ($elemento->ratio->evaluacion==2)
+                                                            @if ($elemento->ratio->valorEstandar < $elemento->valorRatio)
+                                                                <span class="badge bg-danger">Andamos mal</span>  
+                                                            @else
+                                                                <span class="badge bg-success">Andamos bien</span>  
+                                                            @endif      
+                                                        
+                                                        @endif
+                                                       
                                                     @endif    
                                                 @endif 
                                                 </p></li>
