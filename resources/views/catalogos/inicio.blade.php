@@ -5,18 +5,30 @@
         <div class="col col-12 col-md-12 col-lg-12 col-sm-12">
             <div class="card shadow mx-2 p-12">
                <h2 class="mb-0">Tablas catalogo</h2>
-                
+                         @php
+                         $usuario = Auth::user();
+                        @endphp
                         <nav class="mt-4">
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tipos de Empresas</button>
-                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Empresas</button>
+                            @if($usuario->permisoSi(7))
+                             <button class="nav-link @if(!$usuario->permisoSi(8) && !$usuario->permisoSi(9)) active @endif" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Tipos de Empresas</button>
+                            @endif
+                            @if($usuario->permisoSi(8))
+                                
+                                <button class="nav-link  @if(!$usuario->permisoSi(9)) active @endif" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Empresas</button>
+                            @endif 
+                            @if($usuario->permisoSi(9))
                                 <button class="nav-link active" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Ratios</button>
+                            @endif 
                             </div>
                         </nav>
-                    
+                       
+                        
+       
                         <div class="tab-content" id="nav-tabContent">
                             {{--Inicio--}}
-                            <div class="tab-pane fade   mt-4" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                            <div class="tab-pane fade   @if(!$usuario->permisoSi(8) && !$usuario->permisoSi(9) && $usuario->permisoSi(7)) show active @endif mt-4" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                 <div class="row mb-4">
                                     <div class="col">
                                         <h3>Tipo de Empresas</h3>
@@ -124,7 +136,7 @@
                                 </table>
                             </div>
                             {{--FIN--}}
-                            <div class="tab-pane fade mt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="tab-pane fade @if($usuario->permisoSi(8) && !$usuario->permisoSi(9)) show active @endif mt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 {{--Inicio--}}
                                  <div class="row mb-4">
                                    <div class="col">
@@ -240,7 +252,7 @@
                             </div>
                             {{--Fin--}}
                         
-                            <div class="tab-pane fade mt-4 show active" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="tab-pane fade mt-4 @if( $usuario->permisoSi(9)) show active @endif" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 {{--Inicio--}}
                                 <div class="row mb-4">
                                    <div class="col">

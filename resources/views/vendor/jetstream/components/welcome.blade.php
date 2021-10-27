@@ -11,7 +11,7 @@
     </div>
 
     <div class="mt-2 text-gray-500">
-        Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
+       Un sistema donde se pueden calcular ratios, realizar analisis verticales e horizontales, ver graficos de variacion de cuentas y más.
         
     </div>
 </div>
@@ -25,7 +25,7 @@
 
         <div class="ml-12">
             <div class="mt-2 text-sm text-gray-500">
-                Laravel has wonderful documentation covering to end.
+               Estado de resultados y balance general.
             </div>
 
             <a href="https://laravel.com/docs">
@@ -48,7 +48,7 @@
 
         <div class="ml-12">
             <div class="mt-2 text-sm text-gray-500">
-                Laracasts offers thousands of video tutorials on Laravel.
+                A partir de los estados financieros ingresados, ratios de liquidez, endeudamiento y mas.
             </div>
 
             <a href="https://laracasts.com">
@@ -71,7 +71,7 @@
 
         <div class="ml-12">
             <div class="mt-2 text-sm text-gray-500">
-                Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful framework at your fingertips.
+                Con otra empresa o con datos ingresados por el usuario.
             </div>
         </div>
     </div>
@@ -79,12 +79,12 @@
     <div class="p-6 border-t border-gray-200 md:border-l">
         <div class="flex items-center">
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Ver Perfil</div>
+            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://tailwindcss.com/">Ver Variaciones de cuentas</a></div>
         </div>
 
         <div class="ml-12">
             <div class="mt-2 text-sm text-gray-500">
-                Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started what matters most: building your application.
+               Ver variaciones de cuentas en los años ingresados.
             </div>
         </div>
     </div>

@@ -51,6 +51,11 @@ class EstadosImportarController extends Controller
        
     }
     public function compararRatio(){
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(6)){
+            return view('prohibido');
+        }
+
         $ratiosNombres = Ratio::all();
         $empresas  = DB::table('balance')
         ->join('estadoResultado', function ($join) {
@@ -72,6 +77,10 @@ class EstadosImportarController extends Controller
         return view('ratios.comparar',compact('empresas','modelo','ratiosNombres','empresaMia'));
     }
     public function importarBalance(){
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(2)){
+            return view('prohibido');
+        }
         return view('estados.importar');
     }
     public function guardarBalance(Request $request){
@@ -134,6 +143,10 @@ class EstadosImportarController extends Controller
       
     }
     public function verRatios(){
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(5)){
+            return view('prohibido');
+        }
         $modelo = DetalleRatio::first();
         $ratiosNombres = Ratio::all();
         $ratiosNombres1 = Ratio::where('idRazon','=',1)->get();
@@ -149,11 +162,19 @@ class EstadosImportarController extends Controller
         'aniosR','ratiosNombres1','ratiosNombres2','ratiosNombres3','ratiosNombres4'));
     }
     public function verEstados(){
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(3)){
+            return view('prohibido');
+        }
         $balances = Balance::where('idEmpresa','=',Auth::user()->idEmpresa)->get();
         $estados = EstadoResultado::where('idEmpresa','=',Auth::user()->idEmpresa)->get();
         return view('estados.ver',compact('balances','estados'));
     }
     public function calcularRatios(){
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(4)){
+            return view('prohibido');
+        }
         $validos = DB::table('balance')
         ->join('estadoResultado', 'estadoResultado.anio', '=', 'balance.anio')
         ->select('balance.*', 'estadoResultado.*')
@@ -1117,6 +1138,10 @@ class EstadosImportarController extends Controller
         return $this->razonRentabilidadInversion(2020,1);
     }
     public function catalogos(){
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(7) && !$usuario->permisoSi(8) &&!$usuario->permisoSi(9)){
+            return view('prohibido');
+        }
         $tipoEmpresas=TipoEmpresa::all();
         $empresas = Empresa::all();
         $ratios = Ratio::paginate(8);
@@ -1160,6 +1185,10 @@ class EstadosImportarController extends Controller
     }
 
     public function cuentasVariacion(){
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(11)){
+            return view('prohibido');
+        }
         $balances = Balance::where('idEmpresa','=',Auth::user()->idEmpresa)->pluck('idbalance');
         $estados =  EstadoResultado::where('idEmpresa','=',Auth::user()->idEmpresa)->pluck('idEstadoResultado');
         $cuentas1 = DetalleBalance::where('saldo','>',0)->whereIn('idBalance',$balances)->pluck('idCuenta');
@@ -1200,7 +1229,10 @@ class EstadosImportarController extends Controller
     }
     public function analisisInicio(){
        
-       
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(10)){
+            return view('prohibido');
+        }
         $empresaMia  = DB::table('balance')
         ->join('estadoResultado', function ($join) {
             $join->on('balance.anio', '=', 'estadoResultado.anio')
@@ -1236,6 +1268,10 @@ class EstadosImportarController extends Controller
     }
     
     public function catalogoSubir(){
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(1)){
+            return view('prohibido');
+        }
         return view('cuentas.subirCatalogo');
     }
     public function guardarCatalogo(Request $request){
@@ -1250,6 +1286,10 @@ class EstadosImportarController extends Controller
         return redirect()->back()->with('mensaje',"Guardado exitosamente");
     }
     public function permisosUsuario(){
+        $usuario = User::where('id','=',Auth::user()->id)->first();
+        if(!$usuario->permisoSi(12)){
+            return view('prohibido');
+        }
         return view('permiso.index');
     }
     public function permisosData(){
