@@ -325,7 +325,7 @@ class EstadosImportarController extends Controller
                 $valores2 = ['04101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
-            }elseif($empresaR->idTipoEmpresa==2){
+            }elseif($empresaR->idTipoEmpresa==2 || $empresaR->idTipoEmpresa==3){
                 $valores2 = ['4101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
@@ -360,7 +360,7 @@ class EstadosImportarController extends Controller
                 $valores2 = ['04101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
-            }elseif($empresaR->idTipoEmpresa==2){
+            }elseif($empresaR->idTipoEmpresa==2 || $empresaR->idTipoEmpresa==3 ){
                 $valores2 = ['4101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
@@ -444,7 +444,7 @@ class EstadosImportarController extends Controller
                 $valores2 = ['04101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
-            }elseif(Auth::user()->empresa->idTipoEmpresa==2){
+            }elseif(Auth::user()->empresa->idTipoEmpresa==2 || $empresaR->idTipoEmpresa==3){
                 $valores2 = ['4101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
@@ -482,7 +482,7 @@ class EstadosImportarController extends Controller
                 $valores2 = ['04101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
-            }elseif($empresaR->idTipoEmpresa==2){
+            }elseif($empresaR->idTipoEmpresa==2 || $empresaR->idTipoEmpresa==3){
                 $valores2 = ['4101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
@@ -715,7 +715,7 @@ class EstadosImportarController extends Controller
             $valores2 = ['04101'];
             $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
             $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
-        }elseif($empresaR->idTipoEmpresa==2){
+        }elseif($empresaR->idTipoEmpresa==2 || $empresaR->idTipoEmpresa==3){
             $valores2 = ['4101'];
             $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
             $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');

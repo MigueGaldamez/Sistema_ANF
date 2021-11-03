@@ -254,11 +254,12 @@ class DatabaseSeeder extends Seeder
 
         TipoEmpresa::create(['nombre'=>'Servicios']);
         TipoEmpresa::create(['nombre'=>'Comercial']);
+        TipoEmpresa::create(['nombre'=>'Ventas']);
 
         Empresa::create(['nombreEmpresa'=>'Empresa 1','idTipoEmpresa'=>1 ,'catalogo'=>0]);
-        Empresa::create(['nombreEmpresa'=>'Empresa 2','idTipoEmpresa'=>1 ,'catalogo'=>0]);
+        Empresa::create(['nombreEmpresa'=>'Empresa 2','idTipoEmpresa'=>2 ,'catalogo'=>0]);
         Empresa::create(['nombreEmpresa'=>'Empresa 3','idTipoEmpresa'=>2 ,'catalogo'=>0]);
-        Empresa::create(['nombreEmpresa'=>'Empresa 4','idTipoEmpresa'=>2 ,'catalogo'=>0]);
+        Empresa::create(['nombreEmpresa'=>'Empresa 4','idTipoEmpresa'=>3 ,'catalogo'=>0]);
 
         // \App\Models\User::factory(10)->create();
         
