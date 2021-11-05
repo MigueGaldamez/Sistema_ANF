@@ -249,7 +249,7 @@ class EstadosImportarController extends Controller
         
         $balance = Balance::where('idEmpresa','=',$empresa)->where('anio','=',$año)->first();
        
-        $valores = ['1101'];
+        $valores = ['1101','1101.01','1101.03','1109.01'];
         $cuentas = Cuenta::whereIn('codigoCuenta',$valores)->pluck('idCuenta');
         $detalle = DetalleBalance::where('idBalance','=',$balance->idBalance)->whereIn('idCuenta',$cuentas)->sum('saldo');
 
@@ -417,13 +417,14 @@ class EstadosImportarController extends Controller
         return $razon;
     }
     public function razonRotacionCuentasPagar($año,$empresa){
+        $empresaR = Empresa::where('idEmpresa','=',$empresa)->first();
         $CxPProm = 0;
         $costo = 0;
         $estado = EstadoResultado::where('idEmpresa','=',$empresa)->where('anio','=',$año)->first();
         $balance = Balance::where('idEmpresa','=',$empresa)->where('anio','=',$año)->first();
         $otroBalances = Balance::where('idEmpresa','=',$empresa)->where('anio','=',$año-1)->pluck('idBalance');
 
-        $valores = ['02101'];
+        $valores = ['02101','2101.01'];
         $cuentas = Cuenta::whereIn('codigoCuenta',$valores)->pluck('idCuenta');
 
         $detalle = DetalleBalance::whereIn('idCuenta',$cuentas)->whereIn('idBalance',$otroBalances)->sum('saldo');
@@ -440,11 +441,11 @@ class EstadosImportarController extends Controller
             }else{
                 $CxPProm = ($inv->saldo);
             }
-            if(Auth::user()->empresa->idTipoEmpresa==1){
+            if($empresaR->idTipoEmpresa==1){
                 $valores2 = ['04101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
-            }elseif(Auth::user()->empresa->idTipoEmpresa==2 || $empresaR->idTipoEmpresa==3){
+            }elseif($empresaR->idTipoEmpresa==2 || $empresaR->idTipoEmpresa==3){
                 $valores2 = ['4101'];
                 $cuentas2 = Cuenta::whereIn('codigoCuenta',$valores2)->pluck('idCuenta');
                 $costo =  DetalleEstadoResultado::where('idEstadoResultado','=',$estado->idEstadoResultado)->whereIn('idCuenta',$cuentas2)->sum('saldo');
@@ -461,7 +462,7 @@ class EstadosImportarController extends Controller
         $balance = Balance::where('idEmpresa','=',$empresa)->where('anio','=',$año)->first();
         $otroBalances = Balance::where('idEmpresa','=',$empresa)->where('anio','=',$año-1)->pluck('idBalance');
 
-        $valores = ['02101'];
+        $valores = ['02101','2101.01'];
         $cuentas = Cuenta::whereIn('codigoCuenta',$valores)->pluck('idCuenta');
 
         $detalle = DetalleBalance::whereIn('idCuenta',$cuentas)->whereIn('idBalance',$otroBalances)->sum('saldo');
