@@ -55,8 +55,19 @@ class EstadosImportarController extends Controller
         if(!$usuario->permisoSi(6)){
             return view('prohibido');
         }
-
+        
+        $aniosR = DetalleRatio::select('anio')->orderBy('anio', 'desc')->distinct()->pluck('anio');
         $ratiosNombres = Ratio::all();
+        
+        $empresasA  = DB::table('balance')
+        ->join('estadoResultado', function ($join) {
+            $join->on('balance.anio', '=', 'estadoResultado.anio')
+            ->On('balance.idEmpresa', '=', 'estadoResultado.idEmpresa');
+        })
+        ->join('empresa','balance.idEmpresa','=','empresa.idEmpresa')
+        ->distinct('empresa.idEmpresa')
+        ->pluck('empresa.idEmpresa');
+        $empresasR = Empresa::whereIn('idEmpresa',$empresasA)->get();
         $empresas  = DB::table('balance')
         ->join('estadoResultado', function ($join) {
             $join->on('balance.anio', '=', 'estadoResultado.anio')
@@ -74,7 +85,7 @@ class EstadosImportarController extends Controller
         ->where('empresa.idEmpresa','=',Auth::user()->idEmpresa)
         ->get();
         $modelo = Empresa::first();
-        return view('ratios.comparar',compact('empresas','modelo','ratiosNombres','empresaMia'));
+        return view('ratios.comparar',compact('empresas','modelo','ratiosNombres','empresaMia','aniosR','empresasR'));
     }
     public function importarBalance(){
         $usuario = User::where('id','=',Auth::user()->id)->first();

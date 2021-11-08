@@ -31,4 +31,9 @@ class Ratio extends Model
     {
             return $this->hasOne(DetalleRatio::class, 'idRatio')->where('idEmpresa','=',$idEmpresa)->where('anio','=',$anio)->first();
     }
+    public function detallesRatiosPromedio()
+    {   
+        $detalle = DetalleRatio::where('idRatio','=',$this->idRatio)->avg('valorRatio');
+        return $detalle;
+    }
 }

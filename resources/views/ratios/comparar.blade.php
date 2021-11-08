@@ -10,6 +10,7 @@
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Comparar con otra empresa</button>
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Ingresar datos para comparar</button>
+                        <button class="nav-link" id="nav-general-tab" data-bs-toggle="tab" data-bs-target="#nav-general" type="button" role="tab" aria-controls="nav-general" aria-selected="false">Comparacion General</button>
                        
                     </div>
                 </nav>
@@ -107,7 +108,63 @@
                         </div>
                        
                     </div>
-                    
+                    <div class="tab-pane fade px-4" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+                        <h4 class="my-4">Comparacion de ratios con respecto al promedio</h4> 
+                        <table class="table table-sm table-striped table-bordered">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Ratio</th>
+                                    <th>Promedio</th>
+                                    
+                                    @foreach ($aniosR as $anio)
+                                        <th>{{$anio}} Empresas que cumplen</th>
+                                    @endforeach
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($ratiosNombres as $ratio)
+                                    <tr>
+                                        <td> {{$ratio->nombreRatio}}</td>
+                                        @php
+                                        $promedio = $ratio->detallesRatiosPromedio();
+                                        @endphp
+                                        <td><b>{{number_format($promedio, 2, '.', ',');}}</b></td>
+                                        @foreach ($aniosR as $anio)
+                                            <td>
+                                            @foreach ($empresasR as $empresa)
+                                              
+                                                @php
+                                                $valor = $ratio->detallesRatioParticular($empresa->idEmpresa,$anio)->valorRatio
+                                                @endphp
+
+                                                  {{--{{$empresa->nombreEmpresa}} <b> {{$valor}}</b>--}}
+
+                                                @if($ratio->evaluacion==1)
+                                                    @if($promedio<=$valor)
+                                                         <span class="badge badge-pill bg-info text-dark">{{$empresa->nombreEmpresa}}</span> 
+                                                    @endif
+                                                @elseif ($ratio->evaluacion==2)
+                                                    @if($promedio>=$valor)
+                                                         <span class="badge badge-pill bg-info text-dark">{{$empresa->nombreEmpresa}}</span> 
+                                                    @endif
+                                                @endif
+                                           
+                                         
+                                            @endforeach
+                                            </td>
+                                         @endforeach
+                                    </tr>
+                                @endforeach
+                                
+                                   
+                               
+                            </tbody>
+                        </table>
+                      
+                        
+                    </div>
                  </div>
                 
 
