@@ -27,7 +27,7 @@
                     {{$valor}}
                 </td>
                 <td>
-                    <input class="form-control ingreso" type="number" name="ratio-{{$ratio->idRatio}}" id="ratio-{{$ratio->idRatio}}" onkeyup="responder({{$ratio->idRatio}},{{$valor}},{{$ratio->evaluacion}})">
+                    <input class="form-control ingreso" max="{{$ratio->valorMax}}" min="{{$ratio->valorMin}}" type="number" name="ratio-{{$ratio->idRatio}}" id="ratio-{{$ratio->idRatio}}" onkeyup="responder({{$ratio->idRatio}},{{$valor}},{{$ratio->evaluacion}})">
                 </td>
                 <td>
                 <b> <span id="respuesta-{{$ratio->idRatio}}"></span></b>

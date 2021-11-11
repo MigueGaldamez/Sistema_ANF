@@ -21,6 +21,8 @@ class CreateRatiosTable extends Migration
             $table->string('valorEstandar');
             $table->integer('evaluacion');
             $table->string('idRazon');
+            $table->string('valorMax');
+            $table->string('valorMin');
             $table->timestamps();
         });
     }

@@ -31,6 +31,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'',
             'evaluacion'=>'1',
+            'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'1',
         ]);
         Ratio::create([
@@ -40,6 +42,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'1',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'1',
         ]);
         Ratio::create([
@@ -49,6 +53,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'1',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'1',
         ]);
         Ratio::create([
@@ -58,6 +64,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'0.05',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'1',
         ]);
         Ratio::create([
@@ -67,6 +75,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'1',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'1',
         ]);
         Ratio::create([
@@ -76,6 +86,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'1',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'1',
         ]);
         Ratio::create([
@@ -85,6 +97,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'8',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
         Ratio::create([
@@ -94,6 +108,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'14',
             'evaluacion'=>'2',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
         Ratio::create([
@@ -103,6 +119,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'12',
             'evaluacion'=>'2',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
         Ratio::create([
@@ -112,6 +130,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'15',
             'evaluacion'=>'2',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
         Ratio::create([
@@ -121,6 +141,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'8',
             'evaluacion'=>'2',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
         Ratio::create([
@@ -130,6 +152,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'30',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
 
@@ -140,6 +164,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'1',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
         Ratio::create([
@@ -149,6 +175,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'1',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
         Ratio::create([
@@ -158,6 +186,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'0.20',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
         Ratio::create([
@@ -167,6 +197,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'0.20',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'2',
         ]);
         Ratio::create([
@@ -176,6 +208,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'0.4',
             'evaluacion'=>'2',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'3',
         ]);
         Ratio::create([
@@ -185,6 +219,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'0.4',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'3',
         ]);
         Ratio::create([
@@ -194,6 +230,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'1',
             'evaluacion'=>'2',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'3',
         ]);
         Ratio::create([
@@ -203,6 +241,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'1',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'3',
         ]);
         Ratio::create([
@@ -212,6 +252,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'0.40',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'4',
         ]);
         Ratio::create([
@@ -221,6 +263,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'1',
             'evaluacion'=>'1',
+             'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'4',
         ]);
         Ratio::create([
@@ -230,6 +274,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'0.05',
             'evaluacion'=>'1',
+            'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'4',
         ]);
         Ratio::create([
@@ -239,6 +285,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'0.05',
             'evaluacion'=>'1',
+            'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'4',
         ]);
         Ratio::create([
@@ -248,6 +296,8 @@ class DatabaseSeeder extends Seeder
             'mensajeMalo'=>'Andamos mal',
             'valorEstandar'=>'0.05',
             'evaluacion'=>'1',
+            'valorMax'=>'2',
+            'valorMin'=>'1',
             'idRazon'=>'4',
         ]);
         //FIN crear rtios
