@@ -398,6 +398,10 @@ class DatabaseSeeder extends Seeder
         DB::unprepared(file_get_contents($path));
         $this->command->info('Cuentas creadas!');
 
+        $path = 'app/Models/respaldoEstados.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info('Estados creados!');
+
       
     }
 }
