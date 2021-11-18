@@ -1192,6 +1192,9 @@ class EstadosImportarController extends Controller
         $tipo = Ratio::findOrFail($request->idRatio);
         $tipo->mensajeMalo = $request->mensajeMalo;
         $tipo->mensajeBueno = $request->mensajeBueno;
+        if($request->valorEstandar<=0 || $request->valorEstandar>99999){
+            return redirect()->back()->with('error',"ingrese un estandar valido");
+        }
         $tipo->valorEstandar = $request->valorEstandar;
         $tipo->save();
         return redirect()->back()->with('mensaje',"Guardado exitosamente");
@@ -1289,6 +1292,9 @@ class EstadosImportarController extends Controller
     }
     public function guardarCatalogo(Request $request){
         $empresa = Empresa::where('idEmpresa','=',Auth::user()->idEmpresa)->first();
+        if($request->archivo==null){
+            return redirect()->back()->with('error',"Seleccione un archivo valido");
+        }
         if($empresa->catalogo==0){
             $empresa->catalogo = 1;
             $empresa->save();
